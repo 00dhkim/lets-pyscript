@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <!-- 어떤 모듈이 py-env에 들어가야 하는지는 아직 모르겠음 -->
+    <py-env>
+        - matplotlib
+        - numpy
+
+    </py-env>
+    <title>Document</title>
+</head>
+<body>
+    <py-script>
+from datetime import datetime
+print('nowdate:', datetime.now())
+    </py-script>
+    <py-script>
+import matplotlib.pyplot as plt
+import numpy as np
+
+def query_hakbun(*args): # *args 필수, 없으면 에러남
+    print('query_hakbun') # pys-onClick 으로 실행되기에 console.log에 대신 출력됨
+    Element('result').element.innerText = Element('hakbun-input').value
+
+    </py-script>
+    <div>
+        <input type='number' id="hakbun-input" placeholder='학번을 입력하세요'/>
+        <button id="query-button" type='submit' pys-onClick='query_hakbun'>query</button>
+    </div>
+    <div id="result">당신의 학번은..</div>
+</body>
+</html>
